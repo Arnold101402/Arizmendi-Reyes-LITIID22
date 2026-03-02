@@ -1,5 +1,3 @@
-﻿using System.ComponentModel.Design;
-
 namespace ProgramacionEstructurada_LITIID22
 {
     internal class Program
@@ -11,7 +9,7 @@ namespace ProgramacionEstructurada_LITIID22
 
             Console.Write("Ingresa la cantidad de personas a clasificar: ");
 
-            while (!int.TryParse(Console.ReadLine(), out cantidad) || cantidad < 0)
+            while (!int.TryParse(Console.ReadLine(), out cantidad) || cantidad < 1)
             {
                 Console.WriteLine("Número inválido. Por favor ingresa un valor numérico.");
                 Console.Write("Ingresa la cantidad de personas a clasificar: ");
@@ -29,8 +27,9 @@ namespace ProgramacionEstructurada_LITIID22
 
                 else { Console.WriteLine(nombre, "Eres menor de edad"); }
             }
-            
-            
+                List<string> nombreGeneral = new List<string>();
+                List<int> edadGeneral = new List<int>();
+
                 List<string> nombreM = new List<string>();
                 List<int> edadM = new List<int>();
                 List<string> nombrem = new List<string>();
@@ -42,11 +41,14 @@ namespace ProgramacionEstructurada_LITIID22
                     nombre = Console.ReadLine();
                     Console.WriteLine("Ingresa la edad de la persona " + i);
 
-                while (!int.TryParse(Console.ReadLine(), out edad) || edad < 0)
+                while (!int.TryParse(Console.ReadLine(), out edad) || edad < 1) 
                 {
                     Console.WriteLine("Número inválido. Por favor ingresa una edad numérica.");
                     Console.WriteLine("Ingresa la edad de la persona " + i);
                 }
+
+                nombreGeneral.Add(nombre);
+                edadGeneral.Add(edad);
 
                 if (edad >= 18)
                     {   nombreM.Add(nombre);
@@ -57,20 +59,25 @@ namespace ProgramacionEstructurada_LITIID22
                         edadm.Add(edad);
                     }
                 }
-                Console.WriteLine("Lista de personas mayores");
+
+            Console.WriteLine("Lista General ");
+
+                for (int i = 0; i < nombreGeneral.Count; i++)
+                {
+                Console.WriteLine(nombreGeneral[i] + " - " + edadGeneral[i]);
+                }
+
+            Console.WriteLine("Lista de personas mayores");
                 for (int i = 0; i < nombreM.Count; i++)
                 {
                     Console.WriteLine(nombreM[i] + " - " + edadM[i]);
-                 
                 }
                 Console.WriteLine("Lista de personas menores");
                 for (int i = 0; i <  nombrem.Count; i++)
                 {
                     Console.WriteLine(nombrem[i] + " - " + edadm[i]);
-
                 }
-
             }
         }
         }
-    
+
